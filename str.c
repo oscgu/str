@@ -12,8 +12,9 @@ strnjoin(const char *first, const char *sec, char *dest, int destsize)
     return -1;
   }
 
-  strncpy(dest, first, firstlen);
-  strncat(dest, sec, seclen);
+  strncpy(dest, first, destsize);
+  int rest = destsize - firstlen - 1;
+  strncat(dest, sec, rest);
   dest[firstlen + seclen] = '\0';
 
   return 1;
